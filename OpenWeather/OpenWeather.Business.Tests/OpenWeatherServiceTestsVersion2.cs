@@ -31,7 +31,7 @@ namespace OpenWeather.Business.Tests
 
             _server
                 .Given(
-                    Request.Create().WithPath("/weather").UsingGet() //  var url = $"{_url}weather?q={city}&appid={_key}";
+                    Request.Create().WithPath("/weather").UsingGet()
                 )
                 .RespondWith(
                     Response.Create()
