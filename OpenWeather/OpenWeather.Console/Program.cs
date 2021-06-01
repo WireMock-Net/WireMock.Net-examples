@@ -1,8 +1,7 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using OpenWeather.Business;
 
-namespace OpenWeather.Console
+namespace OpenWeather.ConsoleVersion1
 {
     class Program
     {

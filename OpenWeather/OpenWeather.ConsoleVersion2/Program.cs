@@ -14,7 +14,7 @@ namespace OpenWeather.ConsoleVersion2
 
             var result = await service.GetInfoAsync("Sittard, NL");
 
-            System.Console.WriteLine($"{result.DegreesCelsius:##.##} celsius ({result.Description})");
+            Console.WriteLine($"{result.DegreesCelsius:##.##} celsius ({result.Description})");
         }
     }
 }
