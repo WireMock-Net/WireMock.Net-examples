@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using OpenWeather.Business;
 
 namespace OpenWeather.ConsoleVersion1
@@ -13,7 +14,7 @@ namespace OpenWeather.ConsoleVersion1
 
             var result = await service.GetInfoAsync("Sittard, NL");
 
-            System.Console.WriteLine($"{result.DegreesCelsius:##.##} celsius ({result.Description})");
+            Console.WriteLine($"{result.DegreesCelsius:##.##} celsius ({result.Description})");
         }
     }
 }
