@@ -3,24 +3,23 @@ using System.Net.Http.Json;
 using System.Threading.Tasks;
 using OpenWeather.Business.Models;
 
-namespace OpenWeather.Business
+namespace OpenWeather.Business;
+
+public class OpenWeatherClient
 {
-    public class OpenWeatherClient
+    private readonly string _url;
+    private readonly string _key;
+    private readonly HttpClient _client = new();
+
+    public OpenWeatherClient(string url, string key)
     {
-        private readonly string _url;
-        private readonly string _key;
-        private readonly HttpClient _client = new HttpClient();
+        _url = url;
+        _key = key;
+    }
 
-        public OpenWeatherClient(string url, string key)
-        {
-            _url = url;
-            _key = key;
-        }
-
-        public Task<OpenWeatherResponse> GetDataAsync(string city)
-        {
-            var url = $"{_url}/weather?q={city}&appid={_key}";
-            return _client.GetFromJsonAsync<OpenWeatherResponse>(url);
-        }
+    public Task<OpenWeatherResponse> GetDataAsync(string city)
+    {
+        var url = $"{_url}/weather?q={city}&appid={_key}";
+        return _client.GetFromJsonAsync<OpenWeatherResponse>(url);
     }
 }

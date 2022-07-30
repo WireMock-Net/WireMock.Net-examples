@@ -1,7 +1,6 @@
-﻿namespace OpenWeather.Business
+﻿namespace OpenWeather.Business;
+
+public static class Constants
 {
-    public static class Constants
-    {
-        public const double KelvinZero = 273.15;
-    }
+    public const double KelvinZero = 273.15;
 }

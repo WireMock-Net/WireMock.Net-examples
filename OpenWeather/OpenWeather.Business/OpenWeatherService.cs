@@ -1,48 +1,41 @@
 ﻿using System.Threading.Tasks;
 using OpenWeather.Business.Models;
 
-namespace OpenWeather.Business
+namespace OpenWeather.Business;
+
+public class OpenWeatherService
 {
-    public class OpenWeatherService
+    private readonly OpenWeatherClient _client;
+
+    public OpenWeatherService(OpenWeatherClient client)
     {
-        private readonly OpenWeatherClient _client;
+        _client = client;
+    }
 
-        public OpenWeatherService(OpenWeatherClient client)
+    public async Task<Result> GetInfoAsync(string city)
+    {
+        var data = await _client.GetDataAsync(city);
+
+        var degreesCelsius = data.Main.Temp - Constants.KelvinZero;
+
+        return new Result
         {
-            _client = client;
-        }
+            DegreesCelsius = degreesCelsius,
+            Description = GetDescription(degreesCelsius)
+        };
+    }
 
-        public async Task<Result> GetInfoAsync(string city)
+    private static string GetDescription(double degreesCelsius)
+    {
+        return degreesCelsius switch
         {
-            var data = await _client.GetDataAsync(city);
+            < 0 => "koud",
 
-            var degreesCelsius = data.Main.Temp - Constants.KelvinZero;
+            < 10 => "fris",
 
-            return new Result
-            {
-                DegreesCelsius = degreesCelsius,
-                Description = GetDescription(degreesCelsius)
-            };
-        }
+            < 20 => "normaal",
 
-        private static string GetDescription(double degreesCelsius)
-        {
-            if (degreesCelsius < 0)
-            {
-                return "koud";
-            }
-
-            if (degreesCelsius < 10)
-            {
-                return "fris";
-            }
-
-            if (degreesCelsius < 20)
-            {
-                return "normaal";
-            }
-
-            return "warm";
-        }
+            _ => "warm"
+        };
     }
 }
