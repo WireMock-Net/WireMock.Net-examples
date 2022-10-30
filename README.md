@@ -4,28 +4,39 @@
 
 
 ### :one: Normal configuration (connecting to Azure)
+
+<div class="left">
+
 ```mermaid
 flowchart LR;
     A[Function App]-->Q[Azure Queue at https://sa.queue.core.windows.net/example-q]
 ```
 
+</div>
 
 ### :two: Local configuration (connecting to [Azurite](https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azurite?tabs=visual-studio))
+
+<div class="left">
 
 ```mermaid
 flowchart LR;
     A[Function App]-->Q[Azurite Queue at 'http://127.0.0.1:10001']
 ```
 
+</div>
+
 ### :three: Local configuration (connecting to WireMock.Net in *Proxy*-mode)
 
 In this step WireMock.Net is configured to act as a proxy to capture all requests which are send by the Azure Function to the local Azurite Queue.
 
+<div class="left">
 
 ```mermaid
 flowchart LR;
-    A[Function App]-->WM[WireMock.Net in proxy-mode at https://localhost:20001]-->Q[Azurite Queue at 'http://127.0.0.1:10001']
+    A[Function App]-->WM[WireMock.Net as proxy at https://localhost:20001]-->Q[Azurite Queue at 'http://127.0.0.1:10001']
 ```
+
+</div>
 
 #### A. Configure WireMock.Net to act as a proxy (running at https://localhost:20001)
 ``` c#
@@ -80,7 +91,7 @@ Multiple mapping files are saved, however there ar only 4 different important me
 
 In this step WireMock.Net is configured to use the mappings to *act* as Azure Queue so that the Azure Function can work correctly.
 
-<div class="left">
+<div style="align: left">
 
 ```mermaid
 flowchart LR;
