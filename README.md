@@ -5,11 +5,11 @@
 
 ### :one: Normal configuration (connecting to Azure)
 
-<div class="left">
+<div style="horizintal-align:left">
 
 ```mermaid
 flowchart LR;
-    A[Function App]-->Q[Azure Queue at https://sa.queue.core.windows.net/example-q]
+    A[Function App]-->Q[Azure Queue at 'https://sa.queue.core.windows.net/example-q']
 ```
 
 </div>
