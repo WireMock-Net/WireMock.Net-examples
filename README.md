@@ -80,10 +80,14 @@ Multiple mapping files are saved, however there ar only 4 different important me
 
 In this step WireMock.Net is configured to use the mappings to *act* as Azure Queue so that the Azure Function can work correctly.
 
+<div class="left">
+
 ```mermaid
 flowchart LR;
     A[Function App]-->WM[WireMock.Net at https://localhost:20001]
 ```
+
+</div>
 
 #### A. Update the mapping files
 Edit the mapping files (.json) which are generated to keep 4 unique:
