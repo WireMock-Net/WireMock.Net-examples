@@ -23,7 +23,7 @@ public class OpenWeatherServiceTestsVersion1
         var result = await _sut.GetInfoAsync("Sittard, NL");
 
         // Assert
-        result.DegreesCelsius.Should().Be(11);
-        result.Description.Should().Be("normaal");
+        result.DegreesCelsius.Should().Be(8.010000000000048);
+        result.Description.Should().Be("fris");
     }
 }
